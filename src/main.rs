@@ -35,4 +35,10 @@ fn main() {
             }
         }
     }
+
+    Command::new("cmd")
+        .arg("/c")
+        .arg("pause")
+        .status()
+        .expect("failed to exit");
 }
