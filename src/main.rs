@@ -1,10 +1,14 @@
 use std::{env, fs, process::Command, time::Instant};
 
 fn separate(exe_path: &str, name: String) {
-    let command = format!("{} {}.pdf {}\\{}-%d.pdf", exe_path, name, name, name);
+    // let command = format!("{} {}.pdf {}\\{}-%d.pdf", exe_path, name, name, name);
+    let source_file = format!("{}.pdf", name);
+    let target = format!("{}\\{}-%d.pdf", name, name);
     Command::new("cmd")
         .arg("/c")
-        .arg(command.as_str())
+        .arg(exe_path)
+        .arg(source_file)
+        .arg(target)
         .status()
         .expect("failed to execute process");
 }
